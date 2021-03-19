@@ -1,0 +1,21 @@
+artifactory: artifactory
+pipelines:
+  name: template_docker_build_and_push
+gitRepo:
+  name: github__tsuyo__jfrog_pipelines_template__system_docker_build_and_push
+  provider: tsuyo_github
+  path: tsuyo/jfrog-pipelines--quickstart-docker-build-and-push
+  # branch: master
+artifactoryRepo:
+  target:
+    name: docker-local
+  promote:
+    name: docker-dev-local
+  username: admin
+docker:
+  image:
+    name: platform.tsuyo.org/docker/dbp
+    # tag: latest
+  file:
+    location: .
+    name: Dockerfile
